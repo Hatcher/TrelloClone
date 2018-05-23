@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Input } from 'antd';
+import { Card as AntCard, Input } from 'antd';
 
 class Card extends Component {
   constructor(props){
@@ -13,10 +13,12 @@ class Card extends Component {
   
   render () {
     return(
-      <div>
-        //Title that is editable
+      <AntCard title={this.state.title} style={{width : 300}}>
+        <p>Card content</p>
+        <p>Card content</p>
+        <p>Card content</p>       
         <Input placeholder={this.state.title} style={{visibility:this.state.inputVisibility}} />
-      </div>
+      </AntCard>
   )}
 }
 export default Card;
