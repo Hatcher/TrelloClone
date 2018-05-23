@@ -22,26 +22,17 @@ function collect(connect, monitor) {
 }
 
 class Board extends Component {
-  constructor(props){
-    super(props);
-    console.log(props);
-    this.handleDelete = this.handleDelete.bind(this);
-  }
-
-  handleDelete(){
-    console.log(this.props.index);
-    return this.props.dispatch(
-      removeBoard(this.props.index)
-    );
-  }
-
   render () {
-    const { connectDropTarget } = this.props;
+    const { connectDropTarget, dispatch, board } = this.props;
+    console.log(board.id);
+    console.log(dispatch);
     return connectDropTarget(
       <div style={{border: "2px solid black", marginRight: "10px", marginLeft:"10px", display:"inline-block"}}>
         <Card />
         <Card />
-        <Button type="danger" style={{marginBottom:"10px" }} onClick={this.handleDelete} >Delete Board</Button>
+        <Button type="danger" style={{marginBottom:"10px" }} onClick={() => dispatch(removeBoard(board.id))}>
+          Delete Board
+        </Button>
       </div>
   )}
 }

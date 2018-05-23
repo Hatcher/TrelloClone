@@ -8,10 +8,10 @@ export const addBoard = (boardIndex) => dispatch => {
 }
 
 export const removeBoard = (boardIndex) => dispatch => {
-  return {
+  dispatch({
     type : REMOVE_BOARD,
     boardIndex
-  }
+  });
 }
 
 // This might need a targetCardIndex, so that the source card can be moved to a specific location.

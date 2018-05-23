@@ -10,26 +10,27 @@ export const boardState = {
 
 const BoardReducer = (state = boardState, action) => {
   let newState = {};
-  let boards = state;
+  let boards = [].concat(state);
   switch(action.type){
     case ADD_BOARD:
       boards.push({  
         id : action.boardIndex, 
         cards : [] 
       });
-      return  boards;
+      newState = boards;
       break;
 
     case REMOVE_BOARD:
-      console.log(action.boardIndex);
-      boards[action.boardIndex].splice(action.boardIndex, 1);
-      return boards; 
+      console.log("Remove is called" );
+      boards.splice(action.boardIndex, 1);
+      newState = boards;
       break;
 
     default:
       return state;
   }
-  return Object.assign({}, state, newState);
+  console.log(newState);
+  return newState;
 }
 
 export default BoardReducer;

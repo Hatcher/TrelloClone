@@ -12,13 +12,20 @@ class App extends Component {
     super(props);
     this.addNewBoard = this.addNewBoard.bind(this);
   }
+  
+  componentWillReceiveProps(nextProps){
+    console.log(nextProps);
+    console.log("hi");
+  }
 
   addNewBoard(){
     this.props.dispatch(
       addBoard(this.props.boards.length)
     )
   }
+
   render() {
+    console.log(this.props);
     return (
       <div className="App">
         <Button onClick={this.addNewBoard}>
@@ -26,9 +33,9 @@ class App extends Component {
         </Button>
         {
           this.props.boards.map((board, index) => {
-            console.log(index);
-             return (
-               <Board board={board} index={index} key={index} dispatch={this.props.dispatch} />)
+            return (
+              <Board board={board} key={index} dispatch={this.props.dispatch} />
+            )
           })
         }
       </div>
@@ -37,10 +44,8 @@ class App extends Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log("About to map state to props");
-  console.log(state);
   return {
-    boards : state.boards 
+    boards : state.boards
   };
 };
 
