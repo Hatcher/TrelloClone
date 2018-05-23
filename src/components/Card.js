@@ -21,8 +21,20 @@ class Card extends Component {
   getTitle(){
     return(
       <div> 
-        { this.state.inputDisplay && <Input placeholder={this.state.title} /> }
-        { !this.state.inputDisplay && <div onDoubleClick={this.handleTitleState}>  { this.state.title } </div> }
+        { this.state.inputDisplay &&
+          <Input
+            autoFocus
+            onPressEnter={(e) => {this.setState({inputDisplay : false});}} 
+            onBlur={(e) => {this.setState({inputDisplay : false});}} 
+            placeholder={this.state.title} />
+        }
+        { !this.state.inputDisplay &&
+          <div 
+            onDoubleClick={this.handleTitleState}
+          >
+            { this.state.title } 
+          </div> 
+        }
       </div>
     );
   }
