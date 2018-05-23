@@ -1,32 +1,37 @@
-import { ADD_CARD, MOVE_CARD, REMOVE_CARD } from '../actions/Types.js;
+import { ADD_BOARD, REMOVE_BOARD } from '../actions/Types.js';
 
 //We have a set of cards in each board that can be moved, added, or removed. 
-const initialState = {
-  boards : [],
+export const boardState = {
+  boards : [{
+      id: 0,
+      cards: []
+    }],
 }
 
-export default function( state = initialState, action){
+const BoardReducer = (state = boardState, action) => {
   let newState = {};
-  let boards = state.boards;
+  console.log("Going to display state");
+  console.log(state);
+  let boards = state;
   switch(action.type){
-    case ADD_CARD:
-      boards[action.boardIndex].cards.push({
-        title: action.title
+    case ADD_BOARD:
+      boards.push({  
+        id : boards.length,
+        cards : [] 
       });
-      newState = { boards };
+      return  boards;
       break;
 
-    case REMOVE_CARD:
-      boards[action.boardIndex].cards.splice(action.cardIndex, 1);
+    case REMOVE_BOARD:
+      console.log(action.boardIndex);
+      boards[action.boardIndex].splice(action.boardIndex, 1);
       newState = { boards };
-      break;
-
-    //Move a board
-    case MOVE_CARD:
       break;
 
     default:
       return state;
   }
-  return Object.assign({}, state, newState);
+  return Object.assign({}, state, newState);//The issue is that I am changing the state of boards from an array to a json object.
 }
+
+export default BoardReducer;

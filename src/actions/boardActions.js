@@ -1,27 +1,17 @@
-import { ADD_CARD, REMOVE_CARD, MOVE_CARD } from './Types.js';
+import { ADD_BOARD, REMOVE_BOARD } from './Types.js';
 
-export function addCard(title, boardIndex){
-  return {
-    type : ADD_CARD,
-    title,
+export const addBoard = (boardIndex) => dispatch => {
+  dispatch({
+    type : ADD_BOARD,
     boardIndex,
-  };
+  });
 }
 
-export function removeCard(cardIndex, boardIndex){
+export const removeBoard = (boardIndex) => dispatch => {
   return {
-    type : REMOVE_CARD,
-    cardIndex,
+    type : REMOVE_BOARD,
     boardIndex
   }
 }
 
 // This might need a targetCardIndex, so that the source card can be moved to a specific location.
-export function moveCard(sourceColumnIndex, sourceCardIndex, targetColumnIndex){
-  return {
-    type : MOVE_CARD,
-    sourceCardIndex,
-    sourceColumnIndex,
-    targetColumnIndex
-  }
-}

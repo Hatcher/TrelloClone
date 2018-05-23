@@ -1,16 +1,24 @@
 import { createStore, applyMiddleware } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
-import rootReducer from './reducers';
+import rootReducers from './reducers';
+import { boardState } from './reducers/BoardReducer.js';
 
-const initialState = {};
+const initialState = {
+  boards : boardState.boards
+};
+
+console.log(initialState);
 
 const middleware = [thunk];
 
 //Root reducer amalgomates the individual reducers to combine store.
 const store = createStore(
-  rootReducer,
+  rootReducers,
   initialState,
-  applyMiddleware(...applyMiddleware)
+  composeWithDevTools(
+    applyMiddleware(...middleware),
+  )
 );
 
 export default store;

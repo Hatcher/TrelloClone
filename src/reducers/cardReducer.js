@@ -1,4 +1,4 @@
-import { ADD_CARD, MOVE_CARD, REMOVE_CARD } from '../actions/Types.js';
+import { ADD_CARD, REMOVE_CARD } from '../actions/Types.js';
 
 //We have a set of cards in each board that can be moved, added, or removed.
 // This reducer handles the actions available to an individual card though.
@@ -7,7 +7,7 @@ const initialState = {
   card : {}
 }
 
-export default function( state = initialState, action){
+const CardReducer = (state = initialState, action) => {
   let newCard = {};
   let newState = {};
   switch(action.type){
@@ -38,3 +38,5 @@ export default function( state = initialState, action){
   }
   return Object.assign({}, state, newState);
 }
+
+export default CardReducer;
