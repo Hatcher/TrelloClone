@@ -8,7 +8,7 @@ const boardTarget = {
     const item = monitor.getItem();
     // Need to specify some order for cards
     // Use redux to hold general state of app?
-    //
+  }
 }
 
 function collect(connect, monitor) {
@@ -18,14 +18,14 @@ function collect(connect, monitor) {
 }
 
 class Board extends Component {
-
   render () {
-    return this.props.connectDropTarget(
+    const { connectDropTarget } = this.props;
+    return connectDropTarget(
       <div style={{display:"inline-block"}}>
-      <Card />
-      <Card />
+        <Card />
+        <Card />
       </div>
   )}
 }
-export default DropTarget(ItemTypes.CARD, boardTarget, collect)(Board);
+export default DropTarget([ItemTypes.CARD], boardTarget, collect)(Board);
 
