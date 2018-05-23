@@ -6,18 +6,38 @@ class Card extends Component {
     super(props);
 
     this.state = {
-      inputVisibility : this.props.title ? 'hidden' : 'visible',
+      inputDisplay : this.props.title ? false : true, 
       title : this.props.title ? this.props.title : 'Double Click To Add a Title'
     }
   }
   
+  handleTitleState(){
+    this.setState({
+      inputDisplay : !this.state.inputDisplay
+    });
+  }
+
+  getTitle(){
+    return (
+      <div style={{display: !this.state.inputDisplay ? 'none' : 'visible'}}
+        onDoubleClick={this.handleTitleState.bind(this)}>
+        { this.state.title }
+      </div>);
+  }
+
   render () {
+    let titleDiv = this.getTitle();
+    let displayValue = this.state.inputDisplay ? 'none' : 'visible';
     return(
-      <AntCard title={this.state.title} style={{width : 300}}>
-        <p>Card content</p>
-        <p>Card content</p>
-        <p>Card content</p>       
-        <Input placeholder={this.state.title} style={{visibility:this.state.inputVisibility}} />
+      <AntCard title={ titleDiv } 
+        style={{width : 300 }}> 
+          <p>Card content</p>
+          <p>Card content</p>
+          <p>Card content</p>       
+          <div style={{ display: displayValue }}>
+            Hi
+            <Input placeholder={this.state.title} />
+          </div>
       </AntCard>
   )}
 }
