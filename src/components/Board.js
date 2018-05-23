@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { DropTarget } from 'react-dnd';
 import Card from './Card.js';
-
+import { ItemTypes } from './Constants.js';
 
 const boardTarget = {
   drop(props, monitor, component){
@@ -27,5 +27,5 @@ class Board extends Component {
       </div>
   )}
 }
-export default DropTarget(ItemTypes.BOARD, boardTarget, collect)(Board);
+export default DropTarget(ItemTypes.CARD, boardTarget, collect)(Board);
 
