@@ -8,6 +8,7 @@ const boardTarget = {
     const item = monitor.getItem();
     // Need to specify some order for cards
     // Use redux to hold general state of app?
+    // Use item id in redux to move items, currently only seeing dragpreview because no state management.
   }
 }
 
@@ -21,7 +22,7 @@ class Board extends Component {
   render () {
     const { connectDropTarget } = this.props;
     return connectDropTarget(
-      <div style={{display:"inline-block"}}>
+      <div style={{marginRight: "10px", marginLeft:"10px", display:"inline-block"}}>
         <Card />
         <Card />
       </div>

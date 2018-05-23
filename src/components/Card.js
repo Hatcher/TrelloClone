@@ -27,10 +27,10 @@ function collect(connect, monitor){
 class Card extends Component {
   constructor(props){
     super(props);
-
+    // The focus of the card needs to be handled in redux, keep track of which card title is being edited.
     this.state = {
-      inputDisplay : this.props.title ? false : true, 
-      title : this.props.title && this.props.title
+      inputDisplay : false, 
+      title : this.props.title ? this.props.title : "Double Click to Edit"
     }
     this.handleTitleState = this.handleTitleState.bind(this);
   }
