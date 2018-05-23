@@ -15,7 +15,7 @@ class App extends Component {
 
   addNewBoard(){
     this.props.dispatch(
-      addBoard("test", this.props)
+      addBoard(this.props.boards.length)
     )
   }
   render() {
@@ -37,9 +37,11 @@ class App extends Component {
 }
 
 const mapStateToProps = (state) => {
+  console.log("About to map state to props");
+  console.log(state);
   return {
     boards : state.boards 
-  }
-}
+  };
+};
 
 export default DragDropContext(HTML5Backend)(connect(mapStateToProps)(App));
