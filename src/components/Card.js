@@ -7,7 +7,7 @@ class Card extends Component {
 
     this.state = {
       inputDisplay : this.props.title ? false : true, 
-      title : this.props.title ? this.props.title : 'Double Click To Add a Title'
+      title : this.props.title && this.props.title
     }
     this.handleTitleState = this.handleTitleState.bind(this);
   }
@@ -24,9 +24,11 @@ class Card extends Component {
         { this.state.inputDisplay &&
           <Input
             autoFocus
+            value={this.state.title}
+            onChange={(e) => {this.setState({title:e.target.value});}}
             onPressEnter={(e) => {this.setState({inputDisplay : false});}} 
             onBlur={(e) => {this.setState({inputDisplay : false});}} 
-            placeholder={this.state.title} />
+            placeholder="Double Click to Add a title" />
         }
         { !this.state.inputDisplay &&
           <div 
