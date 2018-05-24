@@ -46,6 +46,10 @@
   margin-top: 10px;
 } 
 
-.card{
-  margin: "0 auto";
+.cardContent{
+  text-align: left;
+}
+
+.cardText{
+  text-align: left;
 }

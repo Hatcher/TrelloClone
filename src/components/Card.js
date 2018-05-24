@@ -43,7 +43,7 @@ class Card extends Component {
             handleValueChange={this.handleContentChange.bind(this)}
             placeHolder="Add content to this card"
             doubleClickPrompt="Double Click to Edit This Card"
-            containerClass="cardContent"
+            textClass="cardText"
           />
         </AntCard>
       </div>
