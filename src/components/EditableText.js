@@ -27,6 +27,7 @@ class EditableText extends Component {
 
 
   render () {
+    let textClassName = this.props.value ? this.props.textClass : "";
     return(
       <div className={this.props.containerClass}>
         { this.state.inputDisplay && !this.props.textArea && 
@@ -53,7 +54,8 @@ class EditableText extends Component {
         }
 
         { !this.state.inputDisplay &&
-          <div 
+          <div
+            className={textClassName}
             onDoubleClick={this.handleDisplayState}
           >
             { this.props.value ? this.props.value : this.props.doubleClickPrompt }
