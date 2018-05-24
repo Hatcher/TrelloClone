@@ -8,7 +8,7 @@ export const addCard = (boardId, cardId) => dispatch => {
   });
 }
 
-export const deleteCard(cardId){
+export const deleteCard = (cardId) => dispatch => {
   dispatch({
     type : REMOVE_CARD,
     cardId,

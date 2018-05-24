@@ -14,9 +14,7 @@ const BoardReducer = (state = boardState, action) => {
     case ADD_BOARD:
       boards.push({  
         id : action.boardId, 
-        cards : [{
-          id: 0, 
-        }] 
+        cards : [] 
       });
       newState = boards;
       break;
@@ -29,7 +27,6 @@ const BoardReducer = (state = boardState, action) => {
     case UPDATE_TITLE:
       let newBoard = boards.filter(entry => entry.id === action.boardId);
       newBoard = newBoard[0];
-      console.log(newBoard);
       newBoard.title = action.title;
       newState = boards;
       break;
@@ -37,12 +34,20 @@ const BoardReducer = (state = boardState, action) => {
     case ADD_CARD:
       let board = boards.filter(entry => entry.id === action.boardId);
       board = board[0];
-      console.log(action.boardId);
       board.cards.push({ id : action.cardId });
       newState = boards;
       break;
 
     case MOVE_CARD:
+      console.log(action);
+      let targetBoard = boards.filter(entry => entry.id === action.targetBoardId)[0];
+      console.log(targetBoard);
+      targetBoard.cards.push({ id : action.cardId });
+
+      let sourceBoard = boards.filter(entry => entry.id === action.sourceBoardId)[0];
+      console.log(sourceBoard);
+      sourceBoard.cards = sourceBoard.cards.filter(entry => entry.id !== action.cardId)[0];
+      newState = boards;
       //Find the source board and remove card.
       //Find the target board and add the card.
       break;
