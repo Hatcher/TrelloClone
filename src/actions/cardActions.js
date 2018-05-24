@@ -1,4 +1,4 @@
-import { ADD_CARD, REMOVE_CARD, UPDATE_TITLE } from './Types.js';
+import { ADD_CARD, REMOVE_CARD, UPDATE_CONTENT } from './Types.js';
 
 export const addCard = (boardId, cardId) => dispatch => {
   dispatch({
@@ -15,11 +15,10 @@ export const deleteCard = (cardId) => dispatch => {
   });
 }
 
-export const updateTitle = (cardIndex, title, boardId) => dispatch => {
+export const updateContent = (cardId, content) => dispatch => {
   dispatch({
-    type : UPDATE_TITLE,
-    cardIndex,
-    title,
-    boardId
+    type : UPDATE_CONTENT,
+    cardId,
+    content
   });
 }

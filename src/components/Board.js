@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { DropTarget } from 'react-dnd';
-import { Button, Input } from 'antd';
+import { Button } from 'antd';
 import { removeBoard, updateTitle, moveCard } from '../actions/BoardActions.js';
 import { addCard } from '../actions/CardActions.js';
+import EditableText from './EditableText.js';
 import Card from './Card.js';
 import { ItemTypes } from './Constants.js';
 var helpers = require('../helpers.js');
@@ -10,7 +11,6 @@ var helpers = require('../helpers.js');
 const boardTarget = {
   drop(props, monitor, component){
     const item = monitor.getItem();
-    console.log("dropped");
     props.dispatch(moveCard(props.board.id, item.boardId, item.card.id));
   }
 }
@@ -22,22 +22,7 @@ function collect(connect, monitor) {
 }
 
 class Board extends Component {
-  constructor(props){
-    super(props);
-    this.state = {
-      inputDisplay : false, 
-    }
-    this.handleTitleChange = this.handleTitleChange.bind(this);
-    this.handleTitleState = this.handleTitleState.bind(this);
-  }
   
-  // Handles if the input area should be displayed or the title.
-  handleTitleState(){
-    this.setState({
-      inputDisplay : !this.state.inputDisplay
-    });
-  }
-
   // Handles input for board title change
   handleTitleChange(e){
     const { dispatch, board } = this.props;
@@ -54,24 +39,13 @@ class Board extends Component {
   getTitle(){
     const { board } = this.props;
     return (
-      <div className="boardTitle">
-        { this.state.inputDisplay &&
-          <Input
-            autoFocus
-            value={board.title}
-            onChange={this.handleTitleChange}
-            onPressEnter={(e) => {this.setState({inputDisplay : false});}} 
-            onBlur={(e) => {this.setState({inputDisplay : false});}} 
-            placeholder="Add a Title" />
-        }
-        { !this.state.inputDisplay &&
-          <div 
-            onDoubleClick={this.handleTitleState}
-          >
-            { board.title ? board.title : "Double Click to Edit Title" } 
-          </div> 
-        }
-      </div>
+      <EditableText
+        value={board.title}
+        handleValueChange={this.handleTitleChange.bind(this)}
+        placeholder="Add a title"
+        doubleClickPrompt="Double Click to Edit Title"
+        containerClass="boardTitle"
+        />
     );
   }
   render () {

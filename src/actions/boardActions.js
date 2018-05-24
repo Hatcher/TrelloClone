@@ -22,14 +22,6 @@ export const updateTitle = (boardId, title) => dispatch => {
   });
 }
 
-export const addCard = (boardIndex, cardId) => dispatch => {
-  dispatch({
-    type : ADD_CARD,
-    boardIndex,
-    cardId
-  });
-}
-
 export const moveCard = (targetBoardId, sourceBoardId, cardId) => dispatch => {
   dispatch({
     type : MOVE_CARD,
@@ -38,5 +30,3 @@ export const moveCard = (targetBoardId, sourceBoardId, cardId) => dispatch => {
     cardId,
   });
 }
-
-// This might need a targetCardIndex, so that the source card can be moved to a specific location.
