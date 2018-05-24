@@ -25,14 +25,14 @@ class App extends Component {
     return (
       <div className="App">
         <div style={{backgroundColor : "#e8e8e8", height: "68px", textAlign:"left"}}>
-          <div style={{fontSize:"28px", marginLeft:"120px"}}> 
+          <div style={{fontSize:"28px", marginLeft:"120px", display:"inline-block"}}> 
             Trello Clone
             <span style={{marginTop:"-4px", marginLeft:"2px", fontSize:"14px", display:"block"}}>by Anderson Thomas</span>
           </div>
+          <Button style={{float:"right", position:"relative", display:"inline-block", right:"16%", top:"16px"}} onClick={this.addNewBoard}>
+            New Board 
+          </Button>
         </div>
-        <Button onClick={this.addNewBoard}>
-          New Board 
-        </Button>
         <BoardsLayout boards={state.boards} dispatch={dispatch} cards={state.cards} /> 
       </div>
     );

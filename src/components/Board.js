@@ -89,12 +89,12 @@ class Board extends Component {
           })
         }
         <div style={{display:"flex", justifyContent:"space-around" }}>
-        <Button style={{marginBottom:"10px"}} onClick={this.addCard.bind(this)}>
-          Add Card
-        </Button>
-        <Button type="danger" style={{marginBottom:"10px" }} onClick={() => dispatch(removeBoard(board.id))}>
-          Delete Board
-        </Button>
+          <Button style={{marginBottom:"10px"}} onClick={this.addCard.bind(this)}>
+            Add Card
+          </Button>
+          <Button type="danger" style={{marginBottom:"10px" }} onClick={() => dispatch(removeBoard(board.id))}>
+            Delete Board
+          </Button>
         </div>
       </div>
   )}
