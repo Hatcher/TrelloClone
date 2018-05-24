@@ -33,7 +33,7 @@ class App extends Component {
         <Button onClick={this.addNewBoard}>
           New Board 
         </Button>
-        <BoardsLayout boards={state.boards} dispatch={state.dispatch} cards={state.cards} /> 
+        <BoardsLayout boards={state.boards} dispatch={dispatch} cards={state.cards} /> 
       </div>
     );
   }

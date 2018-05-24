@@ -1,19 +1,28 @@
 import React, { Component } from 'react';
 import Board from './Board.js';
+import { Row, Col } from 'antd';
 
 class BoardsLayout extends Component {
+  
+  getGrid(){
+    const { boards, dispatch, cards } = this.props;
+    return boards.reduce((arr, board, index) => {
+      arr.push(
+        <Col span={6}>
+          <Board board={board} cards={cards} key={index} dispatch={dispatch} />
+        </Col>);
+      return arr;
+    }, []);
+  }
 
   render () {
-    const { boards, dispatch, cards } = this.props;
     return(
       <div> 
+        <Row type="flex" justify="center" align="top">
         {
-          boards !== undefined ? boards.map((board, index) => {
-            return (
-              <Board board={board} cards={cards} key={index} dispatch={dispatch} />
-            )
-          }) : ''
+          this.props.boards !== undefined ? this.getGrid() : ''
         }
+        </Row>
       </div>
   )}
 }
