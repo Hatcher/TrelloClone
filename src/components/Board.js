@@ -79,7 +79,6 @@ class Board extends Component {
   render () {
     const { connectDropTarget, dispatch, board, cards} = this.props;
     let titleDiv = this.getTitle();
-    
     return connectDropTarget(
       <div style={{border: "2px solid black", marginRight: "10px", marginLeft:"10px", display:"inline-block"}}>
         { titleDiv } 

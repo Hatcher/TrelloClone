@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
 import { Provider } from 'react-redux';
 import store from '../../store.js';
+import { browserHistory } from 'react-router';
 
-class ProviderContext extends Component {
+export default function ProviderContext({ story }){
+  return(
+    <Provider store={store}>
+      {story}
+    </Provider>
+  );
+};
 
-  render () {
-    return(
-      <Provider store={store}>
-      { this.props.children } 
-      </Provider>
-  )}
-}
-export default ProviderContext;
 
