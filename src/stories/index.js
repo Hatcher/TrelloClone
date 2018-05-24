@@ -5,6 +5,10 @@ import { action } from '@storybook/addon-actions';
 import { linkTo } from '@storybook/addon-links';
 
 import { Button, Welcome } from '@storybook/react/demo';
+import Card from '../components/Card.js';
+import ProviderContext from './src/ProviderContext.js';
+import DragContext from './src/DragContext.js';
+import { cardState } from '../reducers/CardReducer.js';
 
 storiesOf('Welcome', module).add('to Storybook', () => <Welcome showApp={linkTo('Button')} />);
 
@@ -17,3 +21,13 @@ storiesOf('Button', module)
       </span>
     </Button>
   ));
+
+storiesOf('Card', module)
+  .add('child of board component', () => 
+    <ProviderContext>
+    <DragContext>
+    <Card card={cardState} boardId={"randString"} dispatch={() => console.log("Called to update redux store")} />
+    </DragContext>
+    </ProviderContext>
+  );
+
