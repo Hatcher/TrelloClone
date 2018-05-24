@@ -30,8 +30,7 @@ class Card extends Component {
 
     return connectDragSource(
       <div>
-      <AntCard 
-        style={{width : 200, margin: "10px 10px 10px 10px" }}> 
+      <AntCard style={{width : 200, margin: "10px 10px 10px 10px" }}> 
           <p>Card content</p>
           <p>Card content</p>
           <p>Card content</p>       
