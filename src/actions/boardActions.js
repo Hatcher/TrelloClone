@@ -1,16 +1,32 @@
-import { ADD_BOARD, REMOVE_BOARD } from './Types.js';
+import { ADD_BOARD, REMOVE_BOARD, UPDATE_TITLE, ADD_CARD} from './Types.js';
 
-export const addBoard = (boardIndex) => dispatch => {
+export const addBoard = (boardId) => dispatch => {
   dispatch({
     type : ADD_BOARD,
-    boardIndex,
+    boardId,
   });
 }
 
-export const removeBoard = (boardIndex) => dispatch => {
+export const removeBoard = (boardId) => dispatch => {
   dispatch({
     type : REMOVE_BOARD,
-    boardIndex
+    boardId
+  });
+}
+
+export const updateTitle = (boardId, title) => dispatch => {
+  dispatch({
+    type : UPDATE_TITLE,
+    boardId,
+    title
+  });
+}
+
+export const addCard = (boardIndex, cardId) => dispatch => {
+  dispatch({
+    type : ADD_CARD,
+    boardIndex,
+    cardId
   });
 }
 

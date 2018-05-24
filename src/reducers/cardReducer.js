@@ -1,42 +1,44 @@
-import { ADD_CARD, REMOVE_CARD } from '../actions/Types.js';
+import { ADD_CARD, REMOVE_CARD, UPDATE_TITLE } from '../actions/Types.js';
 
 //We have a set of cards in each board that can be moved, added, or removed.
 // This reducer handles the actions available to an individual card though.
 // Should add a modifier for title & body.
-const initialState = {
-  card : {}
-}
+export const cardState = [
+  {
+    id : 0, 
+  }
+];
 
-const CardReducer = (state = initialState, action) => {
+const CardReducer = (state = cardState, action) => {
   let newCard = {};
-  let newState = {};
+  let newState = [].concat(state);
   switch(action.type){
     case ADD_CARD:
-      let cardId = state.currentCardIndex;
-      newCard.title = action.title;
-      newCard.id = cardId; 
-      newState = { 
-        cards: {
-          ...state.cards,
-          [cardId]:newCard
-        },
-        currentCardIndex : state.currentCardIndex++
-      };
+      newCard.id = action.cardId; 
+      newState.push(newCard);
       break;
 
     case REMOVE_CARD:
       let stateCards = state.cards;
       stateCards.splice(action.cardIndex, 1);
-      newState = { 
-        cards: stateCards,
-        currentCardIndex : state.currentCardIndex++
-      };
+      newState = { };
       break;
-   
+
+    case UPDATE_TITLE: 
+      console.log(state);
+      newCard = {
+        ...state[action.cardIndex]
+      };
+      newCard.id = action.cardIndex;
+      newCard.title = action.title; 
+      newState.push(newCard);
+      break;
+
     default:
       return state;
   }
-  return Object.assign({}, state, newState);
+  console.log(newState);
+  return newState;
 }
 
 export default CardReducer;

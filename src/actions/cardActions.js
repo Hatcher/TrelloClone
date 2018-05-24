@@ -1,11 +1,11 @@
-import { ADD_CARD, REMOVE_CARD, MOVE_CARD } from './Types.js';
+import { ADD_CARD, REMOVE_CARD, MOVE_CARD, UPDATE_TITLE } from './Types.js';
 
-export function addCard(title, boardIndex){
-  return {
+export const addCard = (boardIndex, cardId) => dispatch => {
+  dispatch({
     type : ADD_CARD,
-    title,
     boardIndex,
-  };
+    cardId
+  });
 }
 
 export function removeCard(cardIndex, boardIndex){
@@ -24,4 +24,13 @@ export function moveCard(sourceColumnIndex, sourceCardIndex, targetColumnIndex){
     sourceColumnIndex,
     targetColumnIndex
   }
+}
+
+export const updateTitle = (cardIndex, title, boardId) => dispatch => {
+  dispatch({
+    type : UPDATE_TITLE,
+    cardIndex,
+    title,
+    boardId
+  });
 }
