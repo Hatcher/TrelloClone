@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { Card as AntCard } from 'antd';
 import { ItemTypes } from './Constants.js';
 import { DragSource } from 'react-dnd';
-
+import EditableText from './EditableText.js';
+import { updateContent } from '../actions/CardActions.js';
 const CardSource = {
   beginDrag(props){
     return props;
@@ -24,16 +25,26 @@ function collect(connect, monitor){
 }
 
 class Card extends Component {
+  
+  handleContentChange(e){
+    const { dispatch, card } = this.props;
+    dispatch(updateContent(card.id, e.target.value));
+  }
+  
   render () {
     const { connectDragSource } = this.props;  
 
     return connectDragSource(
       <div className="card">
-      <AntCard className="card" style={{width : "90%", margin:"0 auto", marginTop:"10px", marginBottom:"10px" }}> 
-          <p>Card content</p>
-          <p>Card content</p>
-          <p>Card content</p>       
-      </AntCard>
+        <AntCard className="card" style={{width : "90%", margin:"0 auto", marginTop:"10px", marginBottom:"10px" }}>     
+          <EditableText
+            value={this.props.card.content}
+            handleValueChange={this.handleContentChange.bind(this)}
+            placeHolder="Add content to this card"
+            doubleClickPrompt="Double Click to Edit This Card"
+            containerClass="cardContent"
+          />
+        </AntCard>
       </div>
   )}
 }

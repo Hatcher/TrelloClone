@@ -11,7 +11,6 @@ var helpers = require('../helpers.js');
 const boardTarget = {
   drop(props, monitor, component){
     const item = monitor.getItem();
-    console.log("dropped");
     props.dispatch(moveCard(props.board.id, item.boardId, item.card.id));
   }
 }
@@ -23,10 +22,6 @@ function collect(connect, monitor) {
 }
 
 class Board extends Component {
-  constructor(props){
-    super(props);
-    this.handleTitleChange = this.handleTitleChange.bind(this);
-  }
   
   // Handles input for board title change
   handleTitleChange(e){
