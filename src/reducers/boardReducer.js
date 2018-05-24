@@ -22,12 +22,12 @@ const BoardReducer = (state = boardState, action) => {
       break;
   
     case REMOVE_BOARD:
-      let arr = boards.filter((entry) => {if(entry.id !== action.boardId) return true; });
+      let arr = boards.filter(entry => entry.id === action.boardId);
       newState = arr;
       break;
     
     case UPDATE_TITLE:
-      let newBoard = boards.filter((entry) => { if(entry.id === action.boardId) return true; });
+      let newBoard = boards.filter(entry => entry.id === action.boardId);
       newBoard = newBoard[0];
       console.log(newBoard);
       newBoard.title = action.title;
@@ -35,7 +35,7 @@ const BoardReducer = (state = boardState, action) => {
       break;
     
     case ADD_CARD:
-      let board = boards.filter((entry) => { if(entry.id === action.boardId) return true; });
+      let board = boards.filter(entry => entry.id === action.boardId);
       board = board[0];
       console.log(action.boardId);
       board.cards.push({ id : action.cardId });

@@ -10,7 +10,7 @@ var helpers = require('../helpers.js');
 const boardTarget = {
   drop(props, monitor, component){
     const item = monitor.getItem();
-    
+    console.log(item); 
     // Need to specify some order for cards
     // Use redux to hold general state of app?
     // Use item id in redux to move items, currently only seeing dragpreview because no state management.
@@ -53,7 +53,7 @@ class Board extends Component {
   }
 
   getTitle(){
-    const { dispatch, board } = this.props;
+    const { board } = this.props;
     return (
       <div> 
         { this.state.inputDisplay &&
@@ -84,9 +84,9 @@ class Board extends Component {
         { titleDiv } 
         {
           board.cards.map((cardObj) => {
-            let cardFromStore = cards.filter((entry) => { entry.id === cardObj.id });
+            let cardFromStore = cards.filter(entry => entry.id === cardObj.id);
             return (
-              <Card card={cardFromStore} boardId={board.id} key={"card"+cardObj.id+"board"+board.id} dispatch={dispatch} />
+              <Card card={cardFromStore[0]} boardId={board.id} key={"card"+cardObj.id+"board"+board.id} dispatch={dispatch} />
             )
           })
         }
