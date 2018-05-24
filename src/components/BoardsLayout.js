@@ -8,7 +8,7 @@ class BoardsLayout extends Component {
     const { boards, dispatch, cards } = this.props;
     return boards.reduce((arr, board, index) => {
       arr.push(
-        <Col style={{marginTop:"28px"}} span={6}>
+        <Col key={board.id+"board"} style={{marginTop:"28px"}} span={6}>
           <Board board={board} cards={cards} key={index} dispatch={dispatch} />
         </Col>);
       return arr;

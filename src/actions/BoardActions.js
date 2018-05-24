@@ -1,4 +1,4 @@
-import { ADD_BOARD, REMOVE_BOARD, UPDATE_TITLE, ADD_CARD, MOVE_CARD } from './Types.js';
+import { ADD_BOARD, REMOVE_BOARD, UPDATE_TITLE, MOVE_CARD } from './Types.js';
 
 export const addBoard = (boardId) => dispatch => {
   dispatch({
