@@ -12,7 +12,6 @@ const CardSource = {
     if(!monitor.didDrop()){
       return;
     }
-    
     return props;
   }
 };
@@ -29,8 +28,8 @@ class Card extends Component {
     const { connectDragSource } = this.props;  
 
     return connectDragSource(
-      <div>
-      <AntCard style={{width : 200, margin: "10px 10px 10px 10px" }}> 
+      <div className="card">
+      <AntCard className="card" style={{width : "90%", margin:"0 auto", marginTop:"10px", marginBottom:"10px" }}> 
           <p>Card content</p>
           <p>Card content</p>
           <p>Card content</p>       

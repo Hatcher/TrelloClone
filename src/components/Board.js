@@ -54,7 +54,7 @@ class Board extends Component {
   getTitle(){
     const { board } = this.props;
     return (
-      <div> 
+      <div className="boardTitle">
         { this.state.inputDisplay &&
           <Input
             autoFocus
@@ -62,13 +62,13 @@ class Board extends Component {
             onChange={this.handleTitleChange}
             onPressEnter={(e) => {this.setState({inputDisplay : false});}} 
             onBlur={(e) => {this.setState({inputDisplay : false});}} 
-            placeholder="Double Click to Add a title" />
+            placeholder="Add a Title" />
         }
         { !this.state.inputDisplay &&
           <div 
             onDoubleClick={this.handleTitleState}
           >
-            { board.title ? board.title : "Please Double Click to Add a title" } 
+            { board.title ? board.title : "Double Click to Edit Title" } 
           </div> 
         }
       </div>
@@ -78,7 +78,7 @@ class Board extends Component {
     const { connectDropTarget, dispatch, board, cards} = this.props;
     let titleDiv = this.getTitle();
     return connectDropTarget(
-      <div style={{border: "2px solid black", marginRight: "10px", marginLeft:"10px", display:"inline-block"}}>
+      <div className="board" style={{display:"inline-block"}}>
         { titleDiv } 
         {
           board.cards.map((cardObj) => {
@@ -88,12 +88,14 @@ class Board extends Component {
             )
           })
         }
-        <Button style={{marginBottom:"10px"}} onClick={this.addCard.bind(this)}>
-          Add Card
-        </Button>
-        <Button type="danger" style={{marginBottom:"10px" }} onClick={() => dispatch(removeBoard(board.id))}>
-          Delete Board
-        </Button>
+        <div style={{display:"flex", justifyContent:"space-around" }}>
+          <Button style={{marginBottom:"10px"}} onClick={this.addCard.bind(this)}>
+            Add Card
+          </Button>
+          <Button type="danger" style={{marginBottom:"10px" }} onClick={() => dispatch(removeBoard(board.id))}>
+            Delete Board
+          </Button>
+        </div>
       </div>
   )}
 }
