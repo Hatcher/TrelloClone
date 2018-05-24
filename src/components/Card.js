@@ -12,7 +12,6 @@ const CardSource = {
     if(!monitor.didDrop()){
       return;
     }
-    
     return props;
   }
 };
