@@ -51,5 +51,6 @@
 }
 
 .cardText{
+  white-space: pre;
   text-align: left;
 }
