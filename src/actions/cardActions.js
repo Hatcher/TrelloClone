@@ -1,9 +1,9 @@
 import { ADD_CARD, REMOVE_CARD, MOVE_CARD, UPDATE_TITLE } from './Types.js';
 
-export const addCard = (boardIndex, cardId) => dispatch => {
+export const addCard = (boardId, cardId) => dispatch => {
   dispatch({
     type : ADD_CARD,
-    boardIndex,
+    boardId,
     cardId
   });
 }

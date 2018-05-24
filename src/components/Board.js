@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { DropTarget } from 'react-dnd';
 import { Button, Input } from 'antd';
-import { removeBoard, updateTitle, addCard } from '../actions/BoardActions.js';
-import { addCard as addCardOverall } from '../actions/CardActions.js';
+import { removeBoard, updateTitle } from '../actions/BoardActions.js';
+import { addCard } from '../actions/CardActions.js';
 import Card from './Card.js';
 import { ItemTypes } from './Constants.js';
 var helpers = require('../helpers.js');
