@@ -1,4 +1,4 @@
-import { ADD_BOARD, REMOVE_BOARD, UPDATE_TITLE, ADD_CARD} from '../actions/Types.js';
+import { ADD_BOARD, REMOVE_BOARD, UPDATE_TITLE, ADD_CARD, MOVE_CARD } from '../actions/Types.js';
 import { cardState } from './CardReducer.js';
 
 //We have a set of cards in each board that can be moved, added, or removed. 
@@ -40,6 +40,11 @@ const BoardReducer = (state = boardState, action) => {
       console.log(action.boardId);
       board.cards.push({ id : action.cardId });
       newState = boards;
+      break;
+
+    case MOVE_CARD:
+      //Find the source board and remove card.
+      //Find the target board and add the card.
       break;
 
     default:

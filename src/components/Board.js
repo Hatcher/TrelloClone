@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { DropTarget } from 'react-dnd';
 import { Button, Input } from 'antd';
-import { removeBoard, updateTitle } from '../actions/BoardActions.js';
+import { removeBoard, updateTitle, moveCard } from '../actions/BoardActions.js';
 import { addCard } from '../actions/CardActions.js';
 import Card from './Card.js';
 import { ItemTypes } from './Constants.js';
@@ -10,7 +10,9 @@ var helpers = require('../helpers.js');
 const boardTarget = {
   drop(props, monitor, component){
     const item = monitor.getItem();
-    console.log(item); 
+    console.log(props);
+    console.log(item);
+    props.dispatch( moveCard(props.board.id, item.boardId, item.card.id));
     // Need to specify some order for cards
     // Use redux to hold general state of app?
     // Use item id in redux to move items, currently only seeing dragpreview because no state management.
