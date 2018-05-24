@@ -12,9 +12,6 @@ const boardTarget = {
     const item = monitor.getItem();
     console.log("dropped");
     props.dispatch(moveCard(props.board.id, item.boardId, item.card.id));
-    // Need to specify some order for cards
-    // Use redux to hold general state of app?
-    // Use item id in redux to move items, currently only seeing dragpreview because no state management.
   }
 }
 
@@ -27,7 +24,6 @@ function collect(connect, monitor) {
 class Board extends Component {
   constructor(props){
     super(props);
-    // The focus of the card needs to be handled in redux, keep track of which card title is being edited.
     this.state = {
       inputDisplay : false, 
     }
@@ -35,19 +31,21 @@ class Board extends Component {
     this.handleTitleState = this.handleTitleState.bind(this);
   }
   
+  // Handles if the input area should be displayed or the title.
   handleTitleState(){
     this.setState({
       inputDisplay : !this.state.inputDisplay
     });
   }
 
+  // Handles input for board title change
   handleTitleChange(e){
     const { dispatch, board } = this.props;
     dispatch(updateTitle(board.id, e.target.value));
   }
   
+  // Creates a new card in store
   addCard(){
-   // let temp = dispatch(addCard(board.id));
     const { dispatch, board, cards } = this.props;
     let cardId = helpers.makeUniqueId(cards);
     dispatch(addCard(board.id, cardId));
