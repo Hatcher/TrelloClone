@@ -22,7 +22,7 @@ const BoardReducer = (state = boardState, action) => {
       break;
   
     case REMOVE_BOARD:
-      let arr = boards.filter(entry => entry.id === action.boardId);
+      let arr = boards.filter(entry => entry.id !== action.boardId);
       newState = arr;
       break;
     
