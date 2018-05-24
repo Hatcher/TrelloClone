@@ -38,6 +38,7 @@ class Card extends Component {
       <div className="card">
         <AntCard className="card" style={{width : "90%", margin:"0 auto", marginTop:"10px", marginBottom:"10px" }}>     
           <EditableText
+            textArea={true}
             value={this.props.card.content}
             handleValueChange={this.handleContentChange.bind(this)}
             placeHolder="Add content to this card"
