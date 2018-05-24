@@ -41,15 +41,11 @@ const BoardReducer = (state = boardState, action) => {
     case MOVE_CARD:
       let targetBoard = boards.filter(entry => entry.id === action.targetBoardId)[0];
       targetBoard.cards.push({ id : action.cardId });
-
+      
       let sourceBoard = boards.filter(entry => entry.id === action.sourceBoardId)[0];
       sourceBoard.cards = sourceBoard.cards.filter(entry => entry.id !== action.cardId);
 
-      console.log(sourceBoard.cards);
-      console.log(targetBoard.cards);
       newState = boards;
-      //Find the source board and remove card.
-      //Find the target board and add the card.
       break;
 
     default:
