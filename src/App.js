@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Board from './components/Board.js';
 import { DragDropContext } from 'react-dnd';
 import { Button } from 'antd';
 import { addBoard } from './actions/BoardActions.js';
 import HTML5Backend from 'react-dnd-html5-backend';
+import BoardsLayout from './components/BoardsLayout.js';
 import './App.css';
 var helpers = require('./helpers.js');
 
@@ -22,7 +22,6 @@ class App extends Component {
 
   render() {
     const { state, dispatch } = this.props;  
-    console.log(state);
     return (
       <div className="App">
         <div style={{backgroundColor : "#e8e8e8", height: "68px", textAlign:"left"}}>
@@ -34,13 +33,7 @@ class App extends Component {
         <Button onClick={this.addNewBoard}>
           New Board 
         </Button>
-        {
-          state.boards !== undefined ? state.boards.map((board, index) => {
-            return (
-              <Board board={board} cards={state.cards} key={index} dispatch={dispatch} />
-            )
-          }) : ''
-        }
+        <BoardsLayout boards={state.boards} dispatch={state.dispatch} cards={state.cards} /> 
       </div>
     );
   }
