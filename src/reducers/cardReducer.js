@@ -24,7 +24,7 @@ const CardReducer = (state = cardState, action) => {
       newState = { };
       break;
 
-    case UPDATE_TITLE: 
+    /*case UPDATE_TITLE: 
       console.log(state);
       newCard = {
         ...state[action.cardIndex]
@@ -32,12 +32,11 @@ const CardReducer = (state = cardState, action) => {
       newCard.id = action.cardIndex;
       newCard.title = action.title; 
       newState.push(newCard);
-      break;
+      break;*/
 
     default:
       return state;
   }
-  console.log(newState);
   return newState;
 }
 

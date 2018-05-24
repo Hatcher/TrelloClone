@@ -30,7 +30,7 @@ export const addCard = (boardIndex, cardId) => dispatch => {
   });
 }
 
-export const moveCard = (sourceBoardId, targetBoardId, cardId) => dispatch => {
+export const moveCard = (targetBoardId, sourceBoardId, cardId) => dispatch => {
   dispatch({
     type : MOVE_CARD,
     targetBoardId,

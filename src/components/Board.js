@@ -10,8 +10,7 @@ var helpers = require('../helpers.js');
 const boardTarget = {
   drop(props, monitor, component){
     const item = monitor.getItem();
-    console.log(props);
-    console.log(item);
+    console.log("dropped");
     props.dispatch(moveCard(props.board.id, item.boardId, item.card.id));
     // Need to specify some order for cards
     // Use redux to hold general state of app?
